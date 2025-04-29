@@ -11,10 +11,14 @@ class Usuario(Base):
     id = Column(integer, primary_key=True, index=True)
     nombre = Column(string(50), index=True)
     email = Column(string(100), unique=True, index=True)
-@asynccontextmanager
-async def lifespan(app:FastAPI):
-    await init_db()
-    yield
+    estado = Column(enum(EstadoUsuario), default=EstadoUsuario.ACTIVO)
+
+class EstadoUsuario(str, enum.Enum):
+    __tablename__ = "estado_usuario"
+    ACTIVO = "ACTIVO"
+    INACTIVO = "INACTIVO"
+    ELIMINADO = "ELIMINADO"
+
 app = FastAPI(lifespan=lifespan)
 
 
