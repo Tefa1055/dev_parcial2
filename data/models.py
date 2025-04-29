@@ -1,4 +1,3 @@
-'''Aqui debes consignar el modelo que se te indico en el parcial
-Escribe aquí el que te corresponde.
-
-'''
+from fastapi import FastAPI
+from utils.connection_db import init_db
+from sqlalchemy import column, integer, string, boolean, DateTime, ForeignKey, enum

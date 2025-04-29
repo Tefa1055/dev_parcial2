@@ -19,6 +19,8 @@ class EstadoUsuario(str, enum.Enum):
     INACTIVO = "INACTIVO"
     ELIMINADO = "ELIMINADO"
 
+class UsuarioPremiun(Base):
+
 app = FastAPI(lifespan=lifespan)
 
 
